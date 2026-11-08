@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "release": "preview",
+  "sourceCommitLocal": "245f69b0e4ce128291402b1ce4e7e19d092795f6",
+  "sourceGitTree": "ab38e527955f4c9f391d8e5be6fa14154577f098",
+  "preparedAt": "2026-11-08T15:56:39.418Z",
+  "assets": [
+    {
+      "path": "brand/lockup-ink.svg",
+      "sha256": "f343bff8196bb583bdb948cd46461885a3d5a4bf69b5270615a53dd1f55d9b87",
+      "bytes": 730
+    },
+    {
+      "path": "brand/lockup-reversed.svg",
+      "sha256": "b5219e226fa7fdbf8fddb3fb329fb12905e7b5a38d13700813cd5881953cdd59",
+      "bytes": 730
+    },
+    {
+      "path": "brand/mark-ink.svg",
+      "sha256": "0e1da2369b10ffc6e07a571eee14ef442341ad2152adbdf09c18084a10ca0d1b",
+      "bytes": 380
+    },
+    {
+      "path": "brand/mark-reversed.svg",
+      "sha256": "b7ba02b5f35c5d87aba9e8b6558588dfbda8597c2763891c45383ff509bd733b",
+      "bytes": 380
+    },
+    {
+      "path": "brand/mark-small.svg",
+      "sha256": "7b708904e05c6b97164de5af6c9334904366c68ce7581fd95d12c76410dcf132",
+      "bytes": 302
+    },
+    {
+      "path": "fonts/inter-subset-OFL.txt",
+      "sha256": "5dd548d31a85f756e01d63e00d7faf1e324103ed3e9102fcbbabf2cc2db6dd39",
+      "bytes": 4376
+    },
+    {
+      "path": "fonts/inter-subset.woff2",
+      "sha256": "f7442ab852c9f9c7c01b51b8c70d9b0fa081b35865d6b4fbed578f255688c730",
+      "bytes": 25408
+    },
+    {
+      "path": "fonts/noto-sans-sc-subset-OFL.txt",
+      "sha256": "babcfe66c8a098b2fa279bc724a3a342f8124f77ce18941fbcc1bbb39823cded",
+      "bytes": 4387
+    },
+    {
+      "path": "fonts/noto-sans-sc-subset.woff2",
+      "sha256": "11dadb47a68211d1380f0ac25e13dbd87c3535116057847fd6ee880f1c83d0f4",
+      "bytes": 91640
+    },
+    {
+      "path": "index.html",
+      "sha256": "3ed837558d749fda722adc2762b25ac97a1a1ba58dcf5e97c73a974f4a03958a",
+      "bytes": 11364
+    },
+    {
+      "path": "_astro/index.DHKX7WNr.css",
+      "sha256": "a99fbc2d3f72454030ca972cd38f83417e2bbdd72e855fe601f3525d1d6c7733",
+      "bytes": 10522
+    },
+    {
+      "path": "_astro/spatial-sculpture.Cd2hIaVz_1A75GK.webp",
+      "sha256": "2b9c377d24a520c2ef3baae4f1e02ee75154cfc712202dcecb79a9bbf59564a3",
+      "bytes": 155608
+    },
+    {
+      "path": "_astro/spatial-sculpture.Cd2hIaVz_1AArA5.webp",
+      "sha256": "986967b68ebfcbba344e8c6686b4cb95bff6cd32d7da58b75ab43d37c051db04",
+      "bytes": 151966
+    },
+    {
+      "path": "_astro/spatial-sculpture.Cd2hIaVz_1B4Uxa.avif",
+      "sha256": "9e18c3d8d0eaea58a805297ba5177b2034aeb99cce523b552c79431a4dd4cca3",
+      "bytes": 10673
+    },
+    {
+      "path": "_astro/spatial-sculpture.Cd2hIaVz_1Yhb4m.avif",
+      "sha256": "4a625f4c82212e13f2c333d256aaab602867dc088eb0f25d8fd6a13f113dc9ae",
+      "bytes": 19166
+    },
+    {
+      "path": "_astro/spatial-sculpture.Cd2hIaVz_2g2oRi.webp",
+      "sha256": "4461e0b8751c81b0703f7fb9e9604c84123a71d8ab5dd06b12648b631f7842e1",
+      "bytes": 21354
+    },
+    {
+      "path": "_astro/spatial-sculpture.Cd2hIaVz_2u696e.avif",
+      "sha256": "825631e0a1a816683def7a0377f8e3621f910b4275078632e71fe78c18ed0e98",
+      "bytes": 38660
+    },
+    {
+      "path": "_astro/spatial-sculpture.Cd2hIaVz_lxz0s.webp",
+      "sha256": "4fb517cc03212e405d44c3a2b3e771e06782904d94325bbb45b4de0e01d13559",
+      "bytes": 57444
+    },
+    {
+      "path": "_astro/spatial-sculpture.Cd2hIaVz_Z1V8vnz.webp",
+      "sha256": "c4bdab03213a688a5fca8c4767a03b82dbb5afe2f0b60bff311055f132341fc0",
+      "bytes": 82352
+    },
+    {
+      "path": "_astro/spatial-sculpture.Cd2hIaVz_Z2qdOR1.avif",
+      "sha256": "7bc66472e5c95fb7092c58df5505ea3647d5c04640d2ded45e4486e0371c07a4",
+      "bytes": 69682
+    },
+    {
+      "path": "_astro/spatial-sculpture.Cd2hIaVz_Z2qHbKl.avif",
+      "sha256": "685ddc4743357db518a0c9fc23501ac8c64e67f02f91bd88c6b6a21ddbc35ab5",
+      "bytes": 71510
+    },
+    {
+      "path": "_astro/spatial-sculpture.Cd2hIaVz_Z2qWtpr.webp",
+      "sha256": "6294cc0af9700cf5b6f005998b3c17281d2de233d7a8504740eafa3a3b0f916d",
+      "bytes": 38090
+    },
+    {
+      "path": "_astro/spatial-sculpture.Cd2hIaVz_ZioTjF.avif",
+      "sha256": "f8a1c0ac750f82872ae147f4c31cedde4f68d45590a621e7ec3e28d793e2fa3f",
+      "bytes": 27567
+    }
+  ]
+}
