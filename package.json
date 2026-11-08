@@ -1,0 +1,29 @@
+{
+  "name": "yifang-company-website",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "check": "astro check",
+    "build": "astro build",
+    "preview": "astro preview",
+    "verify:build": "node tests/acceptance/build.mjs",
+    "verify:contract": "node --test --test-reporter=tap tests/acceptance/site.test.mjs",
+    "verify:browser": "node tests/acceptance/browser.mjs --evidence-root ../runs/validation",
+    "verify:fallbacks": "node tests/acceptance/browser.mjs --fallbacks --evidence-root ../runs/validation/fallbacks",
+    "verify:bundle": "node tests/acceptance/assets.mjs --evidence-root ../runs/validation"
+  },
+  "dependencies": {
+    "astro": "7.4.7"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "playwright-core": "1.64.1",
+    "subset-font": "2.4.0",
+    "typescript": "5.9.3"
+  }
+}

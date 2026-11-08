@@ -5,3 +5,7 @@ node_modules/
 *.pem
 *.credential.xml
 artifacts/
+dist/
+.astro/
+test-results/
+playwright-report/

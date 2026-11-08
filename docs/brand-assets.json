@@ -1,0 +1,31 @@
+{
+  "policy": "Confirmed SVG shapes and content preserved; CRLF normalized to LF under the existing repository attributes.",
+  "marks": [
+    {
+      "sourceSha256": "90376af110008a68a686b82fea6661d8a46a8da1598fe28e4630238f6855a48d",
+      "path": "public/brand/mark-ink.svg",
+      "sha256": "0e1da2369b10ffc6e07a571eee14ef442341ad2152adbdf09c18084a10ca0d1b"
+    },
+    {
+      "sourceSha256": "e0b4894df308ac0d7ba4d2dfa8152da5965501f535b33ae0bceb17ab43055594",
+      "path": "public/brand/mark-reversed.svg",
+      "sha256": "b7ba02b5f35c5d87aba9e8b6558588dfbda8597c2763891c45383ff509bd733b"
+    },
+    {
+      "sourceSha256": "842d7afb1cfcbb16f5f2c49d35a4b6213a0c4d9902733ff9ae3183b992eefc55",
+      "path": "public/brand/lockup-ink.svg",
+      "sha256": "f343bff8196bb583bdb948cd46461885a3d5a4bf69b5270615a53dd1f55d9b87"
+    },
+    {
+      "sourceSha256": "c6ab489d6a16990ba548f05a2e0e2cd16cd63263688c4a16256bdb8ddea90f29",
+      "path": "public/brand/lockup-reversed.svg",
+      "sha256": "b5219e226fa7fdbf8fddb3fb329fb12905e7b5a38d13700813cd5881953cdd59"
+    },
+    {
+      "sourceSha256": "0c801621e755626d506f6859715ccc56b5e157e05e7f721af1ad3c94e6ca7baa",
+      "path": "public/brand/mark-small.svg",
+      "sha256": "7b708904e05c6b97164de5af6c9334904366c68ce7581fd95d12c76410dcf132"
+    }
+  ],
+  "schemaVersion": 1
+}

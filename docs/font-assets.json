@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "generator": "subset-font@2.4.0 / local HarfBuzz WASM; retains OFL names and notices",
+  "fonts": [
+    {
+      "family": "Noto Sans SC",
+      "path": "public/fonts/noto-sans-sc-subset.woff2",
+      "bytes": 91640,
+      "sha256": "11dadb47a68211d1380f0ac25e13dbd87c3535116057847fd6ee880f1c83d0f4",
+      "source": "https://raw.githubusercontent.com/google/fonts/2894aab31764f10f29c421bdfd2340d3b382d384/ofl/notosanssc/NotoSansSC%5Bwght%5D.ttf",
+      "sourceSha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+      "sourceGitBlob": "fb0637bafbcd804fe32152370a1225990745b4bc",
+      "characters": " &,./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz·—→↓、。一下与专业为主了于互交产人从付代以们件任企优体作使信做先入公关内再决出分划则到制力务动助化升协单即原及口可台司合向品回围圳场型处复套字它定实审家容对导将工市平并库应建式径得性息成我手批技把护拆持指据排探接操支收改数整文新方施明易是景智更有服术杂权来构果架标核案档梳检模每求注洗流测深清演现理用界的真知确科移程站管系索级线组结绕统续维编网署联能自至航范菜行要规视解计让设访证识试谈质起跑路跳软输边迁运返进连迭造部重量问际限需面页项题首验，",
+      "license": {
+        "path": "public/fonts/noto-sans-sc-subset-OFL.txt",
+        "source": "https://raw.githubusercontent.com/google/fonts/2894aab31764f10f29c421bdfd2340d3b382d384/ofl/notosanssc/OFL.txt",
+        "sha256": "babcfe66c8a098b2fa279bc724a3a342f8124f77ce18941fbcc1bbb39823cded",
+        "sourceSha256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9"
+      }
+    },
+    {
+      "family": "Inter",
+      "path": "public/fonts/inter-subset.woff2",
+      "bytes": 25408,
+      "sha256": "f7442ab852c9f9c7c01b51b8c70d9b0fa081b35865d6b4fbed578f255688c730",
+      "source": "https://raw.githubusercontent.com/google/fonts/e1d6480102fed30739fead0faee463101f892c8f/ofl/inter/Inter%5Bopsz%2Cwght%5D.ttf",
+      "sourceSha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031",
+      "sourceGitBlob": "047c92f6e2212473dc436020afed689527076d44",
+      "characters": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 /&.,—·→↓",
+      "license": {
+        "path": "public/fonts/inter-subset-OFL.txt",
+        "source": "https://raw.githubusercontent.com/google/fonts/e1d6480102fed30739fead0faee463101f892c8f/ofl/inter/OFL.txt",
+        "sha256": "5dd548d31a85f756e01d63e00d7faf1e324103ed3e9102fcbbabf2cc2db6dd39",
+        "sourceSha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57"
+      }
+    }
+  ]
+}

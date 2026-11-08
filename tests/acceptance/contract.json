@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "brand": "易方 / MODUS",
+  "legalEntity": "深圳市易方化科技有限公司",
+  "slogan": "把复杂，做对。",
+  "englishSlogan": "COMPLEXITY, DONE RIGHT.",
+  "basePath": "/Yifang-Company-Website/",
+  "navigation": [
+    {
+      "label": "业务能力",
+      "id": "capabilities"
+    },
+    {
+      "label": "合作方式",
+      "id": "approach"
+    },
+    {
+      "label": "关于易方",
+      "id": "about"
+    },
+    {
+      "label": "联系信息",
+      "id": "contact"
+    }
+  ],
+  "contactPlaceholder": "联系方式即将更新",
+  "capabilities": [
+    {
+      "title": "业务梳理与规划",
+      "english": "BUSINESS STRATEGY",
+      "points": [
+        "业务访谈与流程梳理",
+        "需求拆解与优先级",
+        "原型范围与实施路线",
+        "验收口径与交付边界"
+      ]
+    },
+    {
+      "title": "产品与体验设计",
+      "english": "PRODUCT & EXPERIENCE",
+      "points": [
+        "信息架构与任务流程",
+        "界面与交互体验设计",
+        "原型验证与可用性优化",
+        "组件规范与设计系统"
+      ]
+    },
+    {
+      "title": "定制软件与平台",
+      "english": "CUSTOM SOFTWARE",
+      "points": [
+        "企业网站与 Web 应用",
+        "业务管理与协作系统",
+        "权限与审批流程",
+        "现有系统升级与改造"
+      ]
+    },
+    {
+      "title": "AI 与业务自动化",
+      "english": "AI & AUTOMATION",
+      "points": [
+        "企业知识库与智能检索",
+        "AI 助手与业务智能体",
+        "文档处理与流程编排",
+        "人工复核与权限边界"
+      ]
+    },
+    {
+      "title": "数据与系统连接",
+      "english": "DATA & INTEGRATION",
+      "points": [
+        "数据结构与质量规则",
+        "接口整合与系统连接",
+        "数据清洗与迁移",
+        "业务指标与可视化"
+      ]
+    },
+    {
+      "title": "工程交付与演进",
+      "english": "DELIVERY & EVOLUTION",
+      "points": [
+        "技术架构与实现规划",
+        "测试验证与验收支持",
+        "部署、文档与操作交接",
+        "持续迭代与性能优化"
+      ]
+    }
+  ],
+  "budgets": {
+    "jsGzipBytes": 40960,
+    "initialEncodedBytes": 716800
+  },
+  "privateIdentityHashes": [
+    {
+      "length": 3,
+      "sha256": "36c37c20e1c911496e92336f7971cc2132190cf013cccb531bb4918ae3772a2e"
+    },
+    {
+      "length": 3,
+      "sha256": "f2e44560a98374a9245a3ffcfdf74e8df66cf01bcf607c20592fde82b8877d3b"
+    },
+    {
+      "length": 11,
+      "sha256": "1e964df6e6907036511fb3e4d9bf0eb2b635a2388fb58382cb83328b2cb45097"
+    },
+    {
+      "length": 11,
+      "sha256": "ef0bac2b94cd4cf6303936ab284162231c8d9d8d79900c132fdf485b686a9b8c"
+    },
+    {
+      "length": 21,
+      "sha256": "31780a4ddda707fab4efeb6f7b3f749b759521023e51baef38a715fd234e9667"
+    },
+    {
+      "length": 22,
+      "sha256": "6b44aa0fdaf84d3895c46e47714aad54f6cc5fb1d06f7103161fa42cf8882dbe"
+    }
+  ]
+}

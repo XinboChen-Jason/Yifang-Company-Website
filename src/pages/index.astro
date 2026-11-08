@@ -1,0 +1,142 @@
+---
+import { Picture } from 'astro:assets';
+import sculpture from '../assets/spatial-sculpture.png';
+import { site, capabilities } from '../data/site';
+import '../styles/global.css';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const icons = [
+  'M3 21V9h18v12M3 15h18M11 9V3h10v6M11 15v6',
+  'M3 3h18v18H3zM3 9h18M10 9v12M16 15h2',
+  'M8 4 2 12l6 8M16 4l6 8-6 8M14 2l-4 20',
+  'M12 2v20M2 12h20M5 5l14 14M5 19 19 5',
+  'M2 3h7v7H2zM15 14h7v7h-7zM9 6h8v8M5 10v7h10',
+  'M3 3v7h7M3 10a9 9 0 1 1 2 9M12 4v8l5 3',
+];
+---
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={site.description} />
+    <meta name="theme-color" content="#f2eee4" />
+    <title>{site.title}</title>
+    <link rel="icon" type="image/svg+xml" href={`${base}brand/mark-small.svg`} />
+    <link rel="canonical" href={new URL(base, Astro.site)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳至主要内容</a>
+    <header class="site-header wrap">
+      <a class="brand" href="#home" aria-label="易方 MODUS 首页">
+        <img src={`${base}brand/lockup-ink.svg`} width="420" height="120" alt="易方 MODUS" />
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" hidden>
+        菜单 <span class="menu-lines" aria-hidden="true"></span>
+      </button>
+      <nav id="main-navigation" aria-label="主导航">
+        {site.navigation.map(item => <a href={`#${item.id}`}>{item.label}</a>)}
+      </nav>
+    </header>
+    <main id="main" tabindex="-1">
+      <section id="home" class="hero" aria-labelledby="hero-title">
+        <div class="hero-content wrap">
+          <div class="hero-copy">
+            <p class="eyebrow hero-label">{site.englishSlogan}</p>
+            <h1 id="hero-title" aria-label={site.slogan}>{site.hero.lines.map(line => <span>{line}</span>)}</h1>
+            <p class="hero-intro">{site.hero.intro.map(line => <span>{line}</span>)}</p>
+            <a class="hero-cta" href="#capabilities"><span class="arrow" aria-hidden="true">→</span>{site.hero.cta}</a>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <Picture src={sculpture} formats={['avif', 'webp']} fallbackFormat="webp" widths={[320, 480, 640, 800, 1200, 1254]}
+              sizes="(max-width: 359px) min(calc(100vw - 64px), 350px, max(32px, calc(100svh - 480px))), (max-width: 767px) min(calc(100vw - 72px), 350px, max(32px, calc(100svh - 480px))), (max-width: 1100px) min(calc(57.5vw - 73.6px), calc(100svh - 288px)), min(calc(57.5vw - 133.4px), 805px, calc(100svh - 288px))"
+              alt="" loading="eager" fetchpriority="high" />
+          </div>
+          <p class="positioning">{site.positioning}</p>
+          <a class="explore" href="#capabilities">向下探索 <span aria-hidden="true">↓</span></a>
+        </div>
+      </section>
+      <section id="capabilities" class="capabilities wrap" aria-labelledby="capabilities-title">
+        <p class="eyebrow">01 / CAPABILITIES</p>
+        <div class="section-heading">
+          <h2 id="capabilities-title">{site.capabilitiesHeading.map(line => <span>{line}</span>)}</h2>
+          <p class="muted">{site.capabilitiesIntro.map(line => <span>{line}</span>)}</p>
+        </div>
+        <div class="capability-grid">
+          {capabilities.map((group, index) => (
+            <article class="capability" aria-labelledby={`capability-${index}`}>
+              <svg class="capability-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" aria-hidden="true"><path d={icons[index]} /></svg>
+              <div>
+                <p class="number">{String(index + 1).padStart(2, '0')}</p>
+                <h3 id={`capability-${index}`}>{group.title}</h3>
+                <p class="english-label">{group.english}</p>
+                <ul>{group.points.map(point => <li>{point}</li>)}</ul>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section id="approach" class="approach wrap" aria-labelledby="approach-title">
+        <p class="eyebrow">02 / APPROACH</p>
+        <h2 id="approach-title">{site.approachHeading.split('，').map((part, index) => <span>{part}{index === 0 ? '，' : ''}</span>)}</h2>
+        <div class="approach-path">
+          <svg class="desktop-path" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true"><path d="M0 130C170 10 300 250 600 130S980 -10 1200 130" /></svg>
+          <svg class="mobile-path" viewBox="0 0 36 460" preserveAspectRatio="none" aria-hidden="true"><path d="M20 0C-20 155 60 300 20 460" /></svg>
+          <ol>{site.approach.map((step, index) => <li>
+            <p class="number">{String(index + 1).padStart(2, '0')}</p>
+            <h3>{step.title}</h3>
+            <p class="muted">{step.lines.map(line => <span>{line}</span>)}</p>
+          </li>)}</ol>
+        </div>
+      </section>
+      <div class="dark-region">
+        <div class="bottom-grid wrap">
+          <section id="about" aria-labelledby="about-title">
+            <p class="eyebrow">03 / ABOUT MODUS</p>
+            <h2 id="about-title">{site.aboutHeading}</h2>
+            <p class="about-copy">{site.about.map(line => <span>{line}</span>)}</p>
+          </section>
+          <section id="contact" aria-labelledby="contact-title">
+            <p class="eyebrow">04 / CONTACT</p>
+            <h2 id="contact-title">联系信息</h2>
+            <p>{site.contactPlaceholder}</p>
+          </section>
+        </div>
+        <footer class="site-footer wrap">
+          <a class="brand" href="#home" aria-label="易方 MODUS 返回首页"><img src={`${base}brand/lockup-reversed.svg`} width="420" height="120" alt="易方 MODUS" /></a>
+          <div class="footer-line"><p>{site.legalEntity}<span aria-hidden="true"> · </span>{site.brand}</p><p class="english-label">{site.englishSlogan}</p></div>
+        </footer>
+      </div>
+    </main>
+    <script>
+      const button = document.querySelector<HTMLButtonElement>('.menu-toggle');
+      const nav = document.querySelector<HTMLElement>('#main-navigation');
+      if (button && nav) {
+        button.hidden = false;
+        document.documentElement.classList.add('menu-ready');
+        const close = (restoreFocus = false) => {
+          button.setAttribute('aria-expanded', 'false');
+          if (restoreFocus) button.focus();
+        };
+        button.addEventListener('click', () => button.setAttribute('aria-expanded', String(button.getAttribute('aria-expanded') !== 'true')));
+        nav.addEventListener('click', event => {
+          if (!(event.target instanceof Element)) return;
+          const link = event.target.closest('a');
+          if (!link) return;
+          close();
+          const target = document.querySelector<HTMLElement>(link.hash);
+          if (target) { target.tabIndex = -1; target.focus({ preventScroll: true }); }
+        });
+        document.addEventListener('keydown', event => {
+          if (event.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') close(true);
+        });
+        document.addEventListener('click', event => {
+          if (event.target instanceof Node && !nav.contains(event.target) && !button.contains(event.target)) close();
+        });
+        document.addEventListener('focusin', event => {
+          if (event.target instanceof Node && !nav.contains(event.target) && !button.contains(event.target)) close();
+        });
+        matchMedia('(min-width: 768px)').addEventListener('change', () => close());
+      }
+    </script>
+  </body>
+</html>

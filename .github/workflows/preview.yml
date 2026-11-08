@@ -1,0 +1,73 @@
+name: Manual reviewed Pages preview
+
+on:
+  workflow_dispatch:
+    inputs:
+      candidate_sha:
+        description: 'Full reviewed commit SHA (40 characters)'
+        required: true
+        type: string
+      publish_pages:
+        description: 'Owner has separately approved Pages exposure and Actions entitlement'
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-manual
+  cancel-in-progress: false
+
+env:
+  ASTRO_TELEMETRY_DISABLED: '1'
+  CI: 'true'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Verify reviewed candidate
+        env:
+          CANDIDATE_SHA: ${{ inputs.candidate_sha }}
+        run: |
+          test "${#CANDIDATE_SHA}" -eq 40
+          test "$(git rev-parse HEAD)" = "$CANDIDATE_SHA"
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '24.19.0'
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: node tests/acceptance/build.mjs
+      - run: node --test --test-reporter=tap tests/acceptance/site.test.mjs
+      - name: Browser and fallback checks
+        env:
+          PLAYWRIGHT_CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
+        run: |
+          node tests/acceptance/browser.mjs --evidence-root ../runs/validation
+          node tests/acceptance/browser.mjs --fallbacks --evidence-root ../runs/validation/fallbacks
+          node tests/acceptance/assets.mjs --evidence-root ../runs/validation
+      - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
+        with:
+          path: dist
+          retention-days: 1
+  deploy:
+    if: ${{ inputs.publish_pages && github.ref == 'refs/heads/main' }}
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish approved Pages artifact
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
