@@ -1,5 +1,5 @@
-# YIFANG-COMPANY-WEBSITE
+# 易方企业官网
 
-Customer deliverable source area.
+公司内部官网项目，当前仅完成工作区和源码边界初始化，功能、技术方案与上线方式尚未确认。
 
-Raw VOC, customer evidence, credentials and execution records are kept outside this repository.
+此仓库仅存放可交付网站源码及经确认可公开的资源。原始品牌压缩包、需求、内部资料、审批、调用记录、密钥和工作流克隆均在仓库之外。生产发布与最终验收分别在项目专属 Codex 聊天批准。
