@@ -155,6 +155,7 @@ const icons = [
       </div>
     </main>
     <script>
+      const disclosures = new Map<HTMLDetailsElement, { setExpanded: (expanded: boolean) => void; finish: () => void }>();
       // Native details remains usable without JavaScript. Enhance only the
       // transition, measuring actual content instead of imposing a max-height.
       document.querySelectorAll<HTMLDetailsElement>('.disclosure').forEach(details => {
@@ -166,15 +167,15 @@ const icons = [
         let heightAnimation: Animation | undefined;
         let contentAnimation: Animation | undefined;
         const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-        trigger.addEventListener('click', event => {
-          event.preventDefault();
+        const setExpanded = (next: boolean) => {
+          if (expanded === next) return;
           const wasOpen = details.open;
           const height = wasOpen ? panel.getBoundingClientRect().height : 0;
           const opacity = wasOpen ? getComputedStyle(content).opacity : '0';
           const transform = wasOpen ? getComputedStyle(content).transform : 'translateY(8px)';
           heightAnimation?.cancel();
           contentAnimation?.cancel();
-          expanded = !expanded;
+          expanded = next;
           panel.inert = !expanded;
           if (reducedMotion.matches || !panel.animate) {
             details.open = expanded;
@@ -199,6 +200,21 @@ const icons = [
             contentAnimation?.cancel();
             contentAnimation = undefined;
           };
+        };
+        disclosures.set(details, {
+          setExpanded,
+          finish: () => {
+            if (!heightAnimation) return;
+            heightAnimation.cancel();
+            contentAnimation?.cancel();
+            heightAnimation = undefined;
+            contentAnimation = undefined;
+            details.open = expanded;
+          },
+        });
+        trigger.addEventListener('click', event => {
+          event.preventDefault();
+          setExpanded(!expanded);
         });
       });
       const button = document.querySelector<HTMLButtonElement>('.menu-toggle');
@@ -217,6 +233,13 @@ const icons = [
           if (!link) return;
           close();
           const target = document.querySelector<HTMLElement>(link.hash);
+          const disclosure = target?.querySelector<HTMLDetailsElement>('.disclosure');
+          // Settle earlier sections before native anchor positioning, so a
+          // quick navigation cannot keep moving its destination afterward.
+          for (const [other, controller] of disclosures) {
+            if (other !== disclosure) controller.finish();
+          }
+          if (disclosure) disclosures.get(disclosure)?.setExpanded(true);
           if (target) { target.tabIndex = -1; target.focus({ preventScroll: true }); }
         });
         document.addEventListener('keydown', event => {

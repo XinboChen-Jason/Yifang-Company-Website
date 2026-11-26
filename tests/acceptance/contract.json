@@ -19,12 +19,8 @@
       "id": "team"
     },
     {
-      "label": "关于易方",
+      "label": "联系我们",
       "id": "about"
-    },
-    {
-      "label": "联系信息",
-      "id": "contact"
     }
   ],
   "contactPlaceholder": "联系方式即将更新",

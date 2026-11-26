@@ -47,6 +47,8 @@ test('navigation is Chinese and each approved section has an anchor target', () 
     assert.ok(new RegExp('id=["\u0027]' + item.id + '["\u0027]').test(html), 'Missing target: ' + item.id);
   }
   assert.doesNotMatch(navigationText, /CAPABILITIES|APPROACH|ABOUT|CONTACT|SYSTEM MAP/i);
+  assert.doesNotMatch(navigationText, /关于易方|联系信息/);
+  for (const id of ['about', 'contact']) assert.ok(new RegExp('<section\\b[^>]*id=["\u0027]' + id + '["\u0027]').test(html), 'Both footer sections must remain present.');
 });
 
 test('hero has brand proposition without a duplicate method panel', () => {
@@ -86,7 +88,7 @@ test('contact stays private and owner-approved identities are confined to TEAM',
 });
 
 test('meaningful site content exists in HTML without client rendering', () => {
-  for (const value of ['业务能力', '合作方式', '关于易方', '联系信息', contract.legalEntity]) assert.ok(body.includes(value));
+  for (const value of ['业务能力', '合作方式', '联系我们', '联系信息', contract.legalEntity]) assert.ok(body.includes(value));
   assert.ok(body.length > 400, 'Core company content must be present before JavaScript.');
   assert.doesNotMatch(html, /<iframe\b|<form\b/i, 'No unapproved embeds or data collection.');
 });
