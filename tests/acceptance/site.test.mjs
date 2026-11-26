@@ -59,15 +59,26 @@ test('hero has brand proposition without a duplicate method panel', () => {
   assert.equal((compact.match(/从问题，到可运行的系统/g) || []).length, 1);
 });
 
-test('contact remains a truthful placeholder and private identities are absent', async () => {
+test('contact stays private and owner-approved identities are confined to TEAM', async () => {
   assert.ok(body.includes(contract.contactPlaceholder));
-  assert.doesNotMatch(html, /(?:href|src)=["\u0027](?:mailto:|tel:)|微信二维码|创始人|FOUNDER/i);
+  assert.doesNotMatch(html, /(?:href|src)=["\u0027](?:mailto:|tel:)|微信二维码/i);
+  // The owner explicitly requested the named TEAM section on 2026-11-25.
+  // All original private hashes still apply outside that exact section;
+  // only these two named identities are exempt inside it, never contacts.
+  const team = html.match(/<section\b[^>]*id=["\u0027]team["\u0027][^>]*>([\s\S]*?)<\/section>/i);
+  assert.ok(team, 'The approved team information requires its own section.');
+  const publicHashes = new Set(contract.team.map(member => createHash('sha256').update(member.name).digest('hex')));
+  for (const member of contract.team) {
+    for (const value of [member.name, member.position, member.role]) assert.ok(plain(team[1]).includes(value));
+  }
+  assert.doesNotMatch(html.replace(team[0], ''), /创始人|FOUNDER/i);
   for (const file of await files(root)) {
     if (!['.html', '.js', '.css', '.json', '.svg', '.txt', '.xml'].includes(extname(file).toLowerCase())) continue;
     const content = await readFile(file, 'utf8');
     for (const forbidden of contract.privateIdentityHashes) {
-      for (let i = 0; i <= content.length - forbidden.length; i++) {
-        if (createHash('sha256').update(content.slice(i, i + forbidden.length)).digest('hex') === forbidden.sha256)
+      const scanned = file === resolve(root, 'index.html') && publicHashes.has(forbidden.sha256) ? content.replace(team[0], '') : content;
+      for (let i = 0; i <= scanned.length - forbidden.length; i++) {
+        if (createHash('sha256').update(scanned.slice(i, i + forbidden.length)).digest('hex') === forbidden.sha256)
           assert.fail('Private identity emitted in: ' + relative(root, file));
       }
     }

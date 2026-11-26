@@ -26,6 +26,7 @@ const icons = [
   </head>
   <body>
     <a class="skip-link" href="#main">跳至主要内容</a>
+    <div class="site-header-shell">
     <header class="site-header wrap">
       <a class="brand" href="#home" aria-label="易方 MODUS 首页">
         <img src={`${base}brand/lockup-ink.svg`} width="420" height="120" alt="易方 MODUS" />
@@ -37,6 +38,7 @@ const icons = [
         {site.navigation.map(item => <a href={`#${item.id}`}>{item.label}</a>)}
       </nav>
     </header>
+    </div>
     <main id="main" tabindex="-1">
       <section id="home" class="hero" aria-labelledby="hero-title">
         <div class="hero-content wrap">
@@ -77,26 +79,71 @@ const icons = [
       </section>
       <section id="approach" class="approach wrap" aria-labelledby="approach-title">
         <p class="eyebrow">02 / APPROACH</p>
-        <h2 id="approach-title">{site.approachHeading.split('，').map((part, index) => <span>{part}{index === 0 ? '，' : ''}</span>)}</h2>
+        <div class="approach-heading">
+          <h2 id="approach-title">{site.approachHeading.split('，').map((part, index) => <span>{part}{index === 0 ? '，' : ''}</span>)}</h2>
+          <p class="approach-intro muted">{site.approachIntro}</p>
+        </div>
         <div class="approach-path">
-          <svg class="desktop-path" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true"><path d="M0 130C170 10 300 250 600 130S980 -10 1200 130" /></svg>
+          <svg class="desktop-path" viewBox="0 0 1200 100" preserveAspectRatio="none" aria-hidden="true"><path d="M9 50C145 0 280 100 425 50S700 0 840 50S1100 100 1200 50" /></svg>
           <svg class="mobile-path" viewBox="0 0 36 460" preserveAspectRatio="none" aria-hidden="true"><path d="M20 0C-20 155 60 300 20 460" /></svg>
           <ol>{site.approach.map((step, index) => <li>
-            <p class="number">{String(index + 1).padStart(2, '0')}</p>
-            <h3>{step.title}</h3>
-            <p class="muted">{step.lines.map(line => <span>{line}</span>)}</p>
+            <div class="step-overview">
+              <p class="number">{String(index + 1).padStart(2, '0')}</p>
+              <h3 id={`approach-step-${index}`}>{step.title}</h3>
+              <p class="muted">{step.lines.map(line => <span>{line}</span>)}</p>
+            </div>
           </li>)}</ol>
         </div>
+        <details class="disclosure methodology-disclosure">
+          <summary class="disclosure-trigger" aria-controls="methodology-content">
+            <span class="disclosure-label-closed">了解我们的方法论</span><span class="disclosure-label-open">收起方法论</span>
+            <span class="disclosure-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M5 12h14" /><path class="disclosure-plus" d="M12 5v14" /></svg></span>
+          </summary>
+          <div id="methodology-content" class="disclosure-panel">
+            <div class="disclosure-content methodology-grid">
+              {site.approach.map((step, index) => <div class="methodology-column" role="group" aria-labelledby={`approach-step-${index}`}>
+                <p class="methodology-stage"><span>{String(index + 1).padStart(2, '0')}</span>{step.title}</p>
+                <div class="step-principles">{step.principles.map(principle => <article class="principle">
+                  <h4>{principle.title}</h4>
+                  <p>{principle.description}</p>
+                </article>)}</div>
+              </div>)}
+            </div>
+          </div>
+        </details>
+      </section>
+      <section id="team" class="team wrap" aria-labelledby="team-title">
+        <p class="eyebrow">03 / TEAM</p>
+        <div class="section-heading team-heading">
+          <h2 id="team-title">{site.team.heading.map(line => <span>{line}</span>)}</h2>
+          <p class="muted">{site.team.intro}</p>
+        </div>
+        <details class="disclosure team-disclosure">
+          <summary class="disclosure-trigger" aria-controls="team-content">
+            <span class="disclosure-label-closed">了解我们的团队</span><span class="disclosure-label-open">收起团队介绍</span>
+            <span class="disclosure-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M5 12h14" /><path class="disclosure-plus" d="M12 5v14" /></svg></span>
+          </summary>
+          <div id="team-content" class="disclosure-panel">
+          <div class="disclosure-content team-members">
+          {site.team.members.map((member, index) => <article class="team-member" aria-labelledby={`member-${index}`}>
+            <div class="member-meta"><p class="number">{String(index + 1).padStart(2, '0')}</p><p class="english-label">{member.english}</p></div>
+            <h3 id={`member-${index}`}>{member.name}<span class="member-position">{member.position}</span></h3>
+            <p class="member-role">{member.role}</p>
+            <div class="member-biography">{member.biography.map(paragraph => <p>{paragraph}</p>)}</div>
+          </article>)}
+          </div>
+          </div>
+        </details>
       </section>
       <div class="dark-region">
         <div class="bottom-grid wrap">
           <section id="about" aria-labelledby="about-title">
-            <p class="eyebrow">03 / ABOUT MODUS</p>
+            <p class="eyebrow">04 / ABOUT MODUS</p>
             <h2 id="about-title">{site.aboutHeading}</h2>
             <p class="about-copy">{site.about.map(line => <span>{line}</span>)}</p>
           </section>
           <section id="contact" aria-labelledby="contact-title">
-            <p class="eyebrow">04 / CONTACT</p>
+            <p class="eyebrow">05 / CONTACT</p>
             <h2 id="contact-title">联系信息</h2>
             <p>{site.contactPlaceholder}</p>
           </section>
@@ -108,6 +155,52 @@ const icons = [
       </div>
     </main>
     <script>
+      // Native details remains usable without JavaScript. Enhance only the
+      // transition, measuring actual content instead of imposing a max-height.
+      document.querySelectorAll<HTMLDetailsElement>('.disclosure').forEach(details => {
+        const trigger = details.querySelector<HTMLElement>('summary');
+        const panel = details.querySelector<HTMLElement>('.disclosure-panel');
+        const content = details.querySelector<HTMLElement>('.disclosure-content');
+        if (!trigger || !panel || !content) return;
+        let expanded = details.open;
+        let heightAnimation: Animation | undefined;
+        let contentAnimation: Animation | undefined;
+        const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+        trigger.addEventListener('click', event => {
+          event.preventDefault();
+          const wasOpen = details.open;
+          const height = wasOpen ? panel.getBoundingClientRect().height : 0;
+          const opacity = wasOpen ? getComputedStyle(content).opacity : '0';
+          const transform = wasOpen ? getComputedStyle(content).transform : 'translateY(8px)';
+          heightAnimation?.cancel();
+          contentAnimation?.cancel();
+          expanded = !expanded;
+          panel.inert = !expanded;
+          if (reducedMotion.matches || !panel.animate) {
+            details.open = expanded;
+            return;
+          }
+          details.open = true;
+          const duration = expanded ? 560 : 400;
+          const easing = expanded ? 'cubic-bezier(.22, 1, .36, 1)' : 'cubic-bezier(.4, 0, .2, 1)';
+          heightAnimation = panel.animate([
+            { height: `${height}px` },
+            { height: `${expanded ? panel.scrollHeight : 0}px` },
+          ], { duration, easing });
+          contentAnimation = content.animate([
+            { opacity, transform },
+            { opacity: expanded ? '1' : '0', transform: expanded ? 'translateY(0)' : 'translateY(6px)' },
+          ], { duration, easing, fill: 'both' });
+          const current = heightAnimation;
+          current.onfinish = () => {
+            if (heightAnimation !== current) return;
+            details.open = expanded;
+            heightAnimation = undefined;
+            contentAnimation?.cancel();
+            contentAnimation = undefined;
+          };
+        });
+      });
       const button = document.querySelector<HTMLButtonElement>('.menu-toggle');
       const nav = document.querySelector<HTMLElement>('#main-navigation');
       if (button && nav) {
